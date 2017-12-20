@@ -3,6 +3,7 @@ class CreateUserTable < ActiveRecord::Migration[5.1]
   	create_table :user do |t|
           t.string :name
           t.string :password
+          t.string :email
           t.string :profile_id
      end
   end
