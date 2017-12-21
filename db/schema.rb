@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20171220205122) do
     t.string "user_id"
   end
 
-  create_table "user", force: :cascade do |t|
+  create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "password"
     t.string "email"
