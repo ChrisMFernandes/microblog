@@ -21,7 +21,7 @@ get '/signup' do
 end
 
 post '/signup' do
-	@user = User.create(name: params[:name], password: params[:password])
+	@user = User.create(name: params[:name], email: params[:email], password: params[:password])
 	session[:id] = @user.id
 	redirect '/profile'
 end
@@ -32,8 +32,15 @@ end
 
 post '/login' do
 	@user = User.find_by(name: params[:name], password: params[:password])
-	session[:id] = @user.id
-	redirect '/profile'
+		if @user.password == params[:password]    
+		  session[:id] = @user.id
+		  redirect '/profile'
+		else redirect '/failed'
+	 end
+end
+
+get '/failed' do 
+	erb :failed
 end
 
 get '/profile' do
